@@ -5,8 +5,6 @@ from utilities import success, get_input
 
 input = list(map(int, get_input(whole=True).split(",")))
 
-print(input)
-
 state = input
 
 for i in range(80):
