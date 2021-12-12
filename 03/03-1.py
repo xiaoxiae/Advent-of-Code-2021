@@ -17,4 +17,3 @@ for i in range(len(input[0])):
     epsilon_rate += "0" if zeroes < ones else "1"
 
 print(int(gamma_rate, 2) * int(epsilon_rate, 2))
-

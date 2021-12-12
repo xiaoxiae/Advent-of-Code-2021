@@ -8,8 +8,10 @@ input = get_input()
 for i in range(len(input)):
     input[i] = list(map(int, list(input[i])))
 
+
 def in_bounds(x, y):
     return 0 <= x < len(input[0]) and 0 <= y < len(input)
+
 
 total = 0
 for y in range(len(input)):

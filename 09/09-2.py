@@ -11,8 +11,10 @@ basins = {}
 for i in range(len(input)):
     input[i] = list(map(int, list(input[i])))
 
+
 def in_bounds(x, y):
     return 0 <= x < len(input[0]) and 0 <= y < len(input)
+
 
 def get_neighbours(x, y):
     n = []
@@ -25,6 +27,7 @@ def get_neighbours(x, y):
         n.append((nx, ny))
 
     return n
+
 
 def is_lowpoint(x, y):
     val = input[y][x]
@@ -48,6 +51,7 @@ def flow_to_lowpoint(x, y):
         basins[x, y] = 1
     else:
         basins[x, y] += 1
+
 
 total = 0
 for y in range(len(input)):

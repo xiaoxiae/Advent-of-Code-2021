@@ -7,7 +7,7 @@ input = list(map(int, get_input(whole=True).split(",")))
 
 state = input
 
-state_counts = {i:0 for i in range(9)}
+state_counts = {i: 0 for i in range(9)}
 for s in state:
     state_counts[s] += 1
 

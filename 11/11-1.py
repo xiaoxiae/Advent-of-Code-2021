@@ -16,7 +16,6 @@ def do_step(grid) -> int:
         for y in range(len(grid)):
             grid[y][x] += 1
 
-
             if grid[y][x] >= 10:
                 to_flash.append((y, x))
                 flashed.add((y, x))
@@ -27,7 +26,7 @@ def do_step(grid) -> int:
         for dx, dy in NEIGHBOURS:
             nx, ny = x + dx, y + dy
 
-            if not(0 <= nx < len(grid[0]) and 0 <= ny < len(grid)):
+            if not (0 <= nx < len(grid[0]) and 0 <= ny < len(grid)):
 
                 continue
 
@@ -36,7 +35,6 @@ def do_step(grid) -> int:
             if grid[ny][nx] >= 10 and (ny, nx) not in flashed:
                 to_flash.append((ny, nx))
                 flashed.add((ny, nx))
-
 
     for (y, x) in flashed:
         grid[y][x] = 0

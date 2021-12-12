@@ -8,6 +8,7 @@ input = list(map(lambda x: x.split(" -> "), get_input()))
 for i in range(len(input)):
     input[i] = list(map(lambda x: list(map(int, x.split(","))), input[i]))
 
+
 def get_pipe_points(x1, y1, x2, y2):
     x1, x2 = min(x1, x2), max(x1, x2)
     y1, y2 = min(y1, y2), max(y1, y2)

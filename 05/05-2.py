@@ -8,8 +8,10 @@ input = list(map(lambda x: x.split(" -> "), get_input()))
 for i in range(len(input)):
     input[i] = list(map(lambda x: list(map(int, x.split(","))), input[i]))
 
+
 def sign(x):
     return -1 if x < 0 else 0 if x == 0 else 1
+
 
 def get_pipe_points(x1, y1, x2, y2):
 
