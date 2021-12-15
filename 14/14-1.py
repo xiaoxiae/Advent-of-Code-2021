@@ -11,29 +11,55 @@ for rule in rules_str.splitlines():
     a, b = rule.split(" -> ")
     rules[a] = b
 
-for i in range(5):
-    new_template = ""
+rule_counts = {}
+for i in range(len(template) - 1):
+    part = template[i : i + 2]
+    if part not in rule_counts:
+        rule_counts[part] = 1
+    else:
+        rule_counts[part] += 1
 
-    for j in range(len(template) - 1):
-        part = template[j : j + 2]
-        new_template += part[0]
+for i in range(10):
+    new_rule_counts = {}
 
-        if part in rules:
-            new_template += rules[part]
+    for rule in rule_counts:
+        # two new rules
+        a = rule[0] + rules[rule]
+        b = rules[rule] + rule[1]
+
+        if a not in new_rule_counts:
+            new_rule_counts[a] = rule_counts[rule]
         else:
-            print("wow")
-            quit()
-    new_template += template[-1]
+            new_rule_counts[a] += rule_counts[rule]
 
-    print(template)
-    template = new_template
+        if b not in new_rule_counts:
+            new_rule_counts[b] = rule_counts[rule]
+        else:
+            new_rule_counts[b] += rule_counts[rule]
+
+    rule_counts = new_rule_counts
 
 quantity = {}
-for c in template:
-    if c not in quantity:
-        quantity[c] = 1
+for rule in rule_counts:
+    a, b = rule[0], rule[1]
+    c = rule_counts[rule]
+
+    if a not in quantity:
+        quantity[a] = c
     else:
-        quantity[c] += 1
+        quantity[a] += c
+
+    if b not in quantity:
+        quantity[b] = c
+    else:
+        quantity[b] += c
+
+# all elements except the first and last are counted twice
+quantity[template[0]] += 1
+quantity[template[-1]] += 1
+
+for k in quantity:
+    quantity[k] //= 2
 
 min_val = float("inf")
 max_val = 0
@@ -44,4 +70,4 @@ for c in quantity:
     if quantity[c] > max_val:
         max_val = quantity[c]
 
-print(max_val - min_val)
+success(max_val - min_val)

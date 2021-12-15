@@ -70,4 +70,4 @@ for c in quantity:
     if quantity[c] > max_val:
         max_val = quantity[c]
 
-print(max_val - min_val)
+success(max_val - min_val)
